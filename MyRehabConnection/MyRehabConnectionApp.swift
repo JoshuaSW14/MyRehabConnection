@@ -10,12 +10,13 @@ import CoreData
 
 @main
 struct MyRehabConnectionApp: App {
-    let persistenceController = PersistenceController.shared
-
+    @StateObject private var authManager = AuthManager.shared
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            RootView()
+                .environmentObject(authManager)
+                .tint(.mrcRed)
         }
     }
 }

@@ -24,9 +24,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		23F217422ED3789B00A7778C /* MyRehabConnection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyRehabConnection.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		23F217542ED3789C00A7778C /* MyRehabConnectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyRehabConnectionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		23F2175E2ED3789D00A7778C /* MyRehabConnectionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyRehabConnectionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		23F217422ED3789B00A7778C /* My Rehab Connection (MRC).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Rehab Connection (MRC).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23F217542ED3789C00A7778C /* My Rehab Connection (MRC).xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "My Rehab Connection (MRC).xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23F2175E2ED3789D00A7778C /* My Rehab Connection (MRC).xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "My Rehab Connection (MRC).xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -85,9 +85,9 @@
 		23F217432ED3789B00A7778C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				23F217422ED3789B00A7778C /* MyRehabConnection.app */,
-				23F217542ED3789C00A7778C /* MyRehabConnectionTests.xctest */,
-				23F2175E2ED3789D00A7778C /* MyRehabConnectionUITests.xctest */,
+				23F217422ED3789B00A7778C /* My Rehab Connection (MRC).app */,
+				23F217542ED3789C00A7778C /* My Rehab Connection (MRC).xctest */,
+				23F2175E2ED3789D00A7778C /* My Rehab Connection (MRC).xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,7 +114,7 @@
 			packageProductDependencies = (
 			);
 			productName = MyRehabConnection;
-			productReference = 23F217422ED3789B00A7778C /* MyRehabConnection.app */;
+			productReference = 23F217422ED3789B00A7778C /* My Rehab Connection (MRC).app */;
 			productType = "com.apple.product-type.application";
 		};
 		23F217532ED3789C00A7778C /* MyRehabConnectionTests */ = {
@@ -137,7 +137,7 @@
 			packageProductDependencies = (
 			);
 			productName = MyRehabConnectionTests;
-			productReference = 23F217542ED3789C00A7778C /* MyRehabConnectionTests.xctest */;
+			productReference = 23F217542ED3789C00A7778C /* My Rehab Connection (MRC).xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		23F2175D2ED3789D00A7778C /* MyRehabConnectionUITests */ = {
@@ -160,7 +160,7 @@
 			packageProductDependencies = (
 			);
 			productName = MyRehabConnectionUITests;
-			productReference = 23F2175E2ED3789D00A7778C /* MyRehabConnectionUITests.xctest */;
+			productReference = 23F2175E2ED3789D00A7778C /* My Rehab Connection (MRC).xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -327,6 +327,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "My Rehab Connection (MRC)";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -384,6 +385,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "My Rehab Connection (MRC)";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
@@ -400,6 +402,8 @@
 				DEVELOPMENT_TEAM = TC4YBT4J88;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "My Rehab Connection";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -409,9 +413,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = GCPC.MyRehabConnection;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "My Rehab Connection (MRC)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -432,6 +436,8 @@
 				DEVELOPMENT_TEAM = TC4YBT4J88;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "My Rehab Connection";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.medical";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -441,9 +447,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = GCPC.MyRehabConnection;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "My Rehab Connection (MRC)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -465,7 +471,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = GCPC.MyRehabConnectionTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "My Rehab Connection (MRC)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -487,7 +493,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = GCPC.MyRehabConnectionTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "My Rehab Connection (MRC)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -507,7 +513,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = GCPC.MyRehabConnectionUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "My Rehab Connection (MRC)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -527,7 +533,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = GCPC.MyRehabConnectionUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "My Rehab Connection (MRC)";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -548,7 +554,7 @@
 				23F217672ED3789D00A7778C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		23F217682ED3789D00A7778C /* Build configuration list for PBXNativeTarget "MyRehabConnection" */ = {
 			isa = XCConfigurationList;
@@ -557,7 +563,7 @@
 				23F2176A2ED3789D00A7778C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		23F2176B2ED3789D00A7778C /* Build configuration list for PBXNativeTarget "MyRehabConnectionTests" */ = {
 			isa = XCConfigurationList;
@@ -566,7 +572,7 @@
 				23F2176D2ED3789D00A7778C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		23F2176E2ED3789D00A7778C /* Build configuration list for PBXNativeTarget "MyRehabConnectionUITests" */ = {
 			isa = XCConfigurationList;
@@ -575,7 +581,7 @@
 				23F217702ED3789D00A7778C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
