@@ -11,21 +11,23 @@ struct MainAppView: View {
     @EnvironmentObject var authManager: AuthManager
     @State private var isMenuOpen = false
     @State private var selectedTab = 0    // 0 = Videos, 1 = Settings
+    @State private var showClinicInfo = false
     
     var body: some View {
         ZStack(alignment: .leading) {
-            TabView(selection: $selectedTab) {
-                VideoListView(onMenuTapped: toggleMenu)
-                    .tag(0)
-                    .tabItem {
-                        Label("Videos", systemImage: "play.rectangle")
-                    }
-                
-                SettingsView()
-                    .tag(1)
-                    .tabItem {
-                        Label("Settings", systemImage: "gear")
-                    }
+            Group {
+                switch selectedTab {
+                case 0:
+                    VideoListView(onMenuTapped: toggleMenu)
+                case 1:
+                    SettingsView(onMenuTapped: toggleMenu)
+                case 2:
+                    ClinicInfoView(onMenuTapped: toggleMenu)
+                case 3:
+                    PrivacyPolicyView(onMenuTapped: toggleMenu)
+                default:
+                    VideoListView(onMenuTapped: toggleMenu)
+                }
             }
             
             if isMenuOpen {
@@ -50,4 +52,3 @@ struct MainAppView: View {
         }
     }
 }
-

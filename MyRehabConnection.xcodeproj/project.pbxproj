@@ -24,9 +24,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		23F217422ED3789B00A7778C /* My Rehab Connection (MRC).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Rehab Connection (MRC).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23F217422ED3789B00A7778C /* My Rehab Connection Testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Rehab Connection Testing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F217542ED3789C00A7778C /* My Rehab Connection (MRC).xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "My Rehab Connection (MRC).xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		23F2175E2ED3789D00A7778C /* My Rehab Connection (MRC).xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "My Rehab Connection (MRC).xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		23F2175E2ED3789D00A7778C /* My Rehab Connection Testing.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "My Rehab Connection Testing.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -85,9 +85,9 @@
 		23F217432ED3789B00A7778C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				23F217422ED3789B00A7778C /* My Rehab Connection (MRC).app */,
+				23F217422ED3789B00A7778C /* My Rehab Connection Testing.app */,
 				23F217542ED3789C00A7778C /* My Rehab Connection (MRC).xctest */,
-				23F2175E2ED3789D00A7778C /* My Rehab Connection (MRC).xctest */,
+				23F2175E2ED3789D00A7778C /* My Rehab Connection Testing.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,7 +114,7 @@
 			packageProductDependencies = (
 			);
 			productName = MyRehabConnection;
-			productReference = 23F217422ED3789B00A7778C /* My Rehab Connection (MRC).app */;
+			productReference = 23F217422ED3789B00A7778C /* My Rehab Connection Testing.app */;
 			productType = "com.apple.product-type.application";
 		};
 		23F217532ED3789C00A7778C /* MyRehabConnectionTests */ = {
@@ -160,7 +160,7 @@
 			packageProductDependencies = (
 			);
 			productName = MyRehabConnectionUITests;
-			productReference = 23F2175E2ED3789D00A7778C /* My Rehab Connection (MRC).xctest */;
+			productReference = 23F2175E2ED3789D00A7778C /* My Rehab Connection Testing.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -327,7 +327,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "My Rehab Connection (MRC)";
+				PRODUCT_NAME = "My Rehab Connection Testing";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -385,7 +385,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "My Rehab Connection (MRC)";
+				PRODUCT_NAME = "My Rehab Connection Testing";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
@@ -397,6 +397,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TC4YBT4J88;
@@ -415,7 +416,7 @@
 				);
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = GCPC.MyRehabConnection;
-				PRODUCT_NAME = "My Rehab Connection (MRC)";
+				PRODUCT_NAME = "My Rehab Connection Testing";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -431,6 +432,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TC4YBT4J88;
@@ -449,7 +451,7 @@
 				);
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = GCPC.MyRehabConnection;
-				PRODUCT_NAME = "My Rehab Connection (MRC)";
+				PRODUCT_NAME = "My Rehab Connection Testing";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -513,7 +515,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = GCPC.MyRehabConnectionUITests;
-				PRODUCT_NAME = "My Rehab Connection (MRC)";
+				PRODUCT_NAME = "My Rehab Connection Testing";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -533,7 +535,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = GCPC.MyRehabConnectionUITests;
-				PRODUCT_NAME = "My Rehab Connection (MRC)";
+				PRODUCT_NAME = "My Rehab Connection Testing";
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = NO;

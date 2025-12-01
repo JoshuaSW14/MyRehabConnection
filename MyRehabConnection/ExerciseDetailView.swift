@@ -24,6 +24,13 @@ struct ExerciseDetailView: View {
         authManager.loginResponse?.domain ?? "https://myrehabconnection.com/portal"
     }
     
+    private func plainCaption(from html: String) -> String {
+        html
+            .replacingOccurrences(of: "<br>", with: "\n")
+            .replacingOccurrences(of: "<br/>", with: "\n")
+            .replacingOccurrences(of: "<br />", with: "\n")
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             MRCHeader(
@@ -80,7 +87,7 @@ struct ExerciseDetailView: View {
                                 .font(.subheadline)
                                 .bold()
                             
-                            Text(step.caption)
+                            Text(plainCaption(from: step.caption))
                                 .font(.body)
                         }
                         .padding(.bottom, 12)
@@ -98,3 +105,4 @@ struct ExerciseDetailView: View {
         return URL(string: domain + path)
     }
 }
+

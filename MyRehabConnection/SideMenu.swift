@@ -47,10 +47,7 @@ struct SideMenu: View {
                 }
                 
                 menuButton(title: "Clinic Info", systemImage: "info.circle") {
-                    if let domain = authManager.loginResponse?.domain,
-                       let url = URL(string: domain + "/clinic.php") {
-                        openURL(url)
-                    }
+                    selectedTab = 2
                 }
                 
                 menuButton(title: "Make Appointment", systemImage: "calendar.badge.plus") {
@@ -96,10 +93,7 @@ struct SideMenu: View {
                 }
                 
                 menuButton(title: "Privacy Policy", systemImage: "doc.text") {
-                    if let domain = authManager.loginResponse?.domain,
-                       let url = URL(string: domain + "/privacy.php") {
-                        openURL(url)
-                    }
+                    selectedTab = 3
                 }
             }
             
@@ -137,3 +131,4 @@ struct SideMenu: View {
         }
     }
 }
+
