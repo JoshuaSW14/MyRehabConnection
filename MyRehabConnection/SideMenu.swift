@@ -42,10 +42,6 @@ struct SideMenu: View {
                     selectedTab = 0
                 }
                 
-                menuButton(title: "Home", systemImage: "house") {
-                    selectedTab = 0
-                }
-                
                 menuButton(title: "Clinic Info", systemImage: "info.circle") {
                     selectedTab = 2
                 }

@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
+import CryptoKit
 
 struct SettingsView: View {
     @EnvironmentObject var authManager: AuthManager
     @Environment(\.dismiss) private var dismiss
 
     var onMenuTapped: () -> Void
-    // Inputs / Outputs
-    var onSave: ((_ email: String, _ currentPassword: String?, _ newPassword: String?, _ storeVideosLocally: Bool) async throws -> Void)?
     var onClearCache: (() async throws -> Void)?
 
     // Form State
@@ -28,12 +27,12 @@ struct SettingsView: View {
     @State private var alertTitle = ""
     @State private var alertMessage = ""
 
+    private let md5Key = "#RCgray"
+
     init(onMenuTapped: @escaping () -> Void, initialEmail: String? = nil, initialStoreVideosLocally: Bool = false,
-         onSave: ((_ email: String, _ currentPassword: String?, _ newPassword: String?, _ storeVideosLocally: Bool) async throws -> Void)? = nil,
          onClearCache: (() async throws -> Void)? = nil) {
         _email = State(initialValue: initialEmail ?? "")
         _storeVideosLocally = State(initialValue: initialStoreVideosLocally)
-        self.onSave = onSave
         self.onClearCache = onClearCache
         self.onMenuTapped = onMenuTapped
     }
@@ -115,19 +114,130 @@ struct SettingsView: View {
                 Text(alertMessage)
             })
             .onAppear {
-                // If no initial email provided, leave as-is. Wire to AuthManager here if/when an email source is available.
+                print("[SettingsView] onAppear - initial email state: \(email)")
+                // Prefill email from local storage if not provided initially and field is empty
+                let trimmed = email.trimmingCharacters(in: .whitespacesAndNewlines)
+                if trimmed.isEmpty {
+                    let storedEmail = UserDefaults.standard.string(forKey: "MRC.lastLoginEmail")
+                    print("[SettingsView] onAppear - fetched stored email: \(storedEmail ?? "nil")")
+                    if let storedEmail, !storedEmail.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                        email = storedEmail
+                        print("[SettingsView] onAppear - assigned email from UserDefaults: \(email)")
+                    } else {
+                        print("[SettingsView] onAppear - no valid stored email found")
+                    }
+                } else {
+                    print("[SettingsView] onAppear - email already populated: \(email)")
+                }
             }
         }
     }
 
+    // MARK: - Hash helper
+    private func md5(_ string: String) -> String {
+        let digest = Insecure.MD5.hash(data: Data(string.utf8))
+        return digest.map { String(format: "%02hhx", $0) }.joined()
+    }
+
     // MARK: - Actions
     private func handleSave() async {
-        do {
-            try await onSave?(email, currentPassword.isEmpty ? nil : currentPassword, newPassword.isEmpty ? nil : newPassword, storeVideosLocally)
-            alertTitle = "Saved"
-            alertMessage = "Your settings have been updated."
+        guard let patientId = authManager.loginResponse?.patientId else {
+            alertTitle = "Error"
+            alertMessage = "User not authenticated."
             showAlert = true
+            return
+        }
+
+        // Server manages authentication; no local token handling here
+        let newEmail = email.trimmingCharacters(in: .whitespacesAndNewlines)
+        print("[SettingsView] handleSave - attempting to save email: \(newEmail)")
+        // Using patientId as required identifier; server does not require local token here
+
+        // Validate new password if provided
+        var newPasswordHash: String? = nil
+        if !newPassword.isEmpty {
+            if newPassword.count < 8 {
+                alertTitle = "Error"
+                alertMessage = "New password must be at least 8 characters."
+                showAlert = true
+                return
+            }
+            guard newPassword == confirmPassword else {
+                alertTitle = "Error"
+                alertMessage = "New passwords do not match."
+                showAlert = true
+                return
+            }
+            newPasswordHash = md5(md5Key + newPassword)
+        }
+
+        // Build post parameters
+        var postParams: [String: String] = [
+            "patient_id": patientId,
+            "email": newEmail
+        ]
+        if let newPassHash = newPasswordHash {
+            postParams["new_password"] = newPassHash
+        }
+        print("[SettingsView] handleSave - postParams: \(postParams)")
+
+        // Prepare URLRequest
+        guard let url = URL(string: "https://myrehabconnection.com/portal/app/settings.php") else {
+            alertTitle = "Error"
+            alertMessage = "Invalid server URL."
+            showAlert = true
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        let bodyString = postParams.map { "\($0.key)=\($0.value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")" }
+                                   .joined(separator: "&")
+        request.httpBody = bodyString.data(using: .utf8)
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                alertTitle = "Error"
+                alertMessage = "Server returned an unexpected response."
+                showAlert = true
+                return
+            }
+
+            // Parse JSON response
+            if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                if let status = json["status"] as? String, status == "OK" {
+                    if let message = json["message"] as? String {
+                        alertTitle = "Saved"
+                        alertMessage = message
+                    } else {
+                        alertTitle = "Saved"
+                        alertMessage = "Your settings have been updated."
+                    }
+                    print("[SettingsView] handleSave - server status OK, persisting email to UserDefaults: \(newEmail)")
+                    // Keep local email in sync after a successful save
+                    UserDefaults.standard.set(newEmail, forKey: "MRC.lastLoginEmail")
+                    print("[SettingsView] handleSave - persisted email in UserDefaults: \(UserDefaults.standard.string(forKey: "MRC.lastLoginEmail") ?? "nil")")
+
+                    // If needed, refresh session details via AuthManager after save.
+
+                    showAlert = true
+                } else {
+                    print("[SettingsView] handleSave - server returned error: \(json["message"] as? String ?? "unknown")")
+                    let message = json["message"] as? String ?? "An unknown error occurred."
+                    alertTitle = "Error"
+                    alertMessage = message
+                    showAlert = true
+                }
+            } else {
+                print("[SettingsView] handleSave - failed to parse JSON response")
+                alertTitle = "Error"
+                alertMessage = "Failed to parse server response."
+                showAlert = true
+            }
         } catch {
+            print("[SettingsView] handleSave - network error: \(error.localizedDescription)")
             alertTitle = "Error"
             alertMessage = error.localizedDescription
             showAlert = true

@@ -50,6 +50,11 @@ final class AuthService {
         }
         
         let decoded = try JSONDecoder().decode(LoginResponse.self, from: data)
+        
+        // Persist the username (email) locally on successful login
+        UserDefaults.standard.set(username, forKey: "MRC.lastLoginEmail")
+        print("[AuthService] Saved lastLoginEmail to UserDefaults: \(UserDefaults.standard.string(forKey: "MRC.lastLoginEmail") ?? "nil")")
+        
         return decoded
     }
 

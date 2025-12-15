@@ -14,7 +14,7 @@ struct LoginResponse: Codable {
     let domain: String
     let clinic: Clinic
     let exercises: [Exercise]
-
+    
     enum CodingKeys: String, CodingKey {
         case patientId = "patient_id"
         case domain
